@@ -3,3 +3,11 @@
 **/*.js.map
 node_modules/
 tsconfig.json
+webpack.config.js
+version.properties
+.gitreview
+.gitattributes
+.idea/
+.gitignore
+.npm-debug.log
+INFO.yaml

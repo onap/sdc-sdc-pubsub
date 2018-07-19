@@ -1,13 +1,13 @@
 {
   "name": "sdc-pubsub",
-  "version": "1.0.15",
+  "version": "1.0.18",
   "description": "Publish Subscribe library using post message for sdc plugins",
   "main": "index.js",
   "author": "Idan Amit",
   "license": "Apache-2.0",
   "scripts": {
-    "clean": "rimraf dist && rimraf lib",
-    "build": "webpack --mode development"
+    "clean": "rimraf dist",
+    "build": "tsc && webpack --mode development"
   },
   "keywords": [
     "sdc",
