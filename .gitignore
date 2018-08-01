@@ -6,3 +6,5 @@ node_modules/
 **/*.js
 !webpack.config.js
 npm-debug.log
+sdc-pubsub.iml
+node/

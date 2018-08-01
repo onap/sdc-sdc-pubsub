@@ -11,22 +11,30 @@ npm install sdc-pubsub
 ```
 
 ### Loading It Up
-#### ES6
+#### CommonJS
 ```javascript
 import {PluginPubSub} from 'sdc-pubsub'
 ```
-#### ES5
+#### Global Variable
+
+```html
+<!-- index.html -->
+<script src="./node_Modules/sdc-pubsub/dist/sdc-pubsub.js"></script>
+```
 
 ```javascript
-var pluginPubSub = require('PluginPubSub')
+// script.js
+var pubsub = window.sdcPubSub.PluginPubSub;
 ```
 
 ### Usage
 #### Initialize a pubsub client
 ```javascript
-//eventsClientId=<received from query params>
-//parentUrl=<received from query params>
-//eventsToWaitFor = [ “CHECK_IN” ]
+// eventsClientId = client id to be used by the event bus, received from query params
+// parentUrl = event bus location url for communication, received from query params
+// eventsToWaitFor = list of events names that the event hub should wait for their completion.
+//                   the client should send an "ACTION_COMPLETED" event to the hub in order to notify the event hub to continue with the flow.
+//                   For example: [ “CHECK_IN” ]
 
 var client = new PluginPubSub('eventsClientId, parentUrl, eventsToWaitFor')
 ```
@@ -38,6 +46,8 @@ client.notify(“READY”)
 
 #### Register for an event
 ```javascript
+// When lisetning to event we have to specify the specific event we want to act once it being received.
+// eventData.type will hold the event name that was notified by someone else
 client.on((eventData,event) => {
       if(eventData.type == ”WINDOW_OUT”) {
 		             //do logic
@@ -48,7 +58,7 @@ client.on((eventData,event) => {
 
 ### Dependencies
 
-* None.
+None.
 
 ### Tests
 
@@ -61,7 +71,10 @@ None.
 
 ### Links
 
-sdc onap wiki [https://wiki.onap.org/x/_TX0](https://wiki.onap.org/x/_TX0)
+* SDC onap wiki [https://wiki.onap.org/x/_TX0](https://wiki.onap.org/x/_TX0)
+* Generic designer support document [https://wiki.onap.org/display/DW/Generic+Designer+Support](https://wiki.onap.org/display/DW/Generic+Designer+Support)
+* Repository [https://gerrit.onap.org/r/gitweb?p=sdc/sdc-pubsub.git;a=summary](https://gerrit.onap.org/r/gitweb?p=sdc/sdc-pubsub.git;a=summary)
+
 
 ### License
 

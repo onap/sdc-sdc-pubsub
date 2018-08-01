@@ -1,6 +1,6 @@
 {
   "name": "sdc-pubsub",
-  "version": "1.0.18",
+  "version": "1.0.20",
   "description": "Publish Subscribe library using post message for sdc plugins",
   "main": "index.js",
   "author": "Idan Amit",
