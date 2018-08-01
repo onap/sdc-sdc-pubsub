@@ -11,3 +11,6 @@ version.properties
 .gitignore
 .npm-debug.log
 INFO.yaml
+sdc-pubsub.iml
+node/
+pom.xml
