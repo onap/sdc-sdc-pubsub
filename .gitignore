@@ -5,6 +5,8 @@ node_modules/
 **/*.js.map
 **/*.js
 !webpack.config.js
-npm-debug.log
+npm-debug.*
 sdc-pubsub.iml
 node/
+!/jest.config.js
+/coverage/

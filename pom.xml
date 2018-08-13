@@ -11,6 +11,13 @@
 	<properties>
 		<nexus.proxy>https://nexus.onap.org</nexus.proxy>
 		<staging.profile.id>176c31dfe190a</staging.profile.id>
+
+        <sonar.sources>lib</sonar.sources>
+        <sonar.tests>lib</sonar.tests>
+        <sonar.test.inclusions>lib/*.spec.ts</sonar.test.inclusions>
+        <sonar.javascript.lcov.reportPaths>coverage/lcov.info</sonar.javascript.lcov.reportPaths>
+        <sonar.testExecutionReportPaths>coverage/test-report.xml</sonar.testExecutionReportPaths>
+
 	</properties>
 	
 	<build>
@@ -37,6 +44,9 @@
                                 </fileset>
                                 <fileset>
                                     <directory>${basedir}/dist</directory>
+                                </fileset>
+                                <fileset>
+                                    <directory>${basedir}/coverage</directory>
                                 </fileset>
                                 <fileset>
                                     <directory>${basedir}/lib</directory>
@@ -91,6 +101,17 @@
                     </execution>
 
                     <execution>
+                        <id>npm test</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>test -- --coverage</arguments>
+                            <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven>
+                        </configuration>
+                    </execution>
+
+                    <execution>
                         <id>npm run build</id>
                         <goals>
                             <goal>npm</goal>
@@ -100,6 +121,12 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.0.2</version>
             </plugin>
 			
 			<!-- Staging Plugin -->
