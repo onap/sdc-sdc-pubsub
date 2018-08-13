@@ -9,8 +9,10 @@ version.properties
 .gitattributes
 .idea/
 .gitignore
-.npm-debug.log
+npm-debug.*
 INFO.yaml
 sdc-pubsub.iml
 node/
 pom.xml
+/coverage/
+/jest.config.js
