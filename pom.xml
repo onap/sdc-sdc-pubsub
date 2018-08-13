@@ -4,13 +4,20 @@
 
     <groupId>org.openecomp.sdc</groupId>
     <artifactId>sdc-pubsub</artifactId>
-    <version>1.0.20</version>
+    <version>1.0.21</version>
     <packaging>pom</packaging>
     <name>SDC Plugin Pubsub</name>
 	
 	<properties>
 		<nexus.proxy>https://nexus.onap.org</nexus.proxy>
 		<staging.profile.id>176c31dfe190a</staging.profile.id>
+
+        <sonar.typescript.node>node</sonar.typescript.node>
+        <sonar.sources>lib</sonar.sources>
+        <sonar.tests>lib</sonar.tests>
+        <sonar.test.inclusions>lib/*.spec.ts</sonar.test.inclusions>
+        <sonar.typescript.lcov.reportPaths>coverage/lcov.info</sonar.typescript.lcov.reportPaths>
+        <sonar.testExecutionReportPaths>coverage/test-report.xml</sonar.testExecutionReportPaths>
 	</properties>
 	
 	<build>
@@ -20,7 +27,7 @@
 				<version>3.1.0</version>
                 <executions>
                     <execution>
-                        <id>clean dist folder and compiled files</id>
+                        <id>clean dist and coverage folder and compiled files</id>
                         <phase>clean</phase>
                         <goals>
                             <goal>clean</goal>
@@ -37,6 +44,9 @@
                                 </fileset>
                                 <fileset>
                                     <directory>${basedir}/dist</directory>
+                                </fileset>
+                                <fileset>
+                                    <directory>${basedir}/coverage</directory>
                                 </fileset>
                                 <fileset>
                                     <directory>${basedir}/lib</directory>
@@ -91,6 +101,17 @@
                     </execution>
 
                     <execution>
+                        <id>npm test</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>test -- --coverage</arguments>
+                            <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven>
+                        </configuration>
+                    </execution>
+
+                    <execution>
                         <id>npm run build</id>
                         <goals>
                             <goal>npm</goal>
@@ -100,6 +121,12 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.0.2</version>
             </plugin>
 			
 			<!-- Staging Plugin -->
