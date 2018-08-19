@@ -16,3 +16,4 @@ node/
 pom.xml
 /coverage/
 /jest.config.js
+/target/
