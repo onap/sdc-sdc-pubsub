@@ -12,7 +12,7 @@
 		<nexus.proxy>https://nexus.onap.org</nexus.proxy>
 		<staging.profile.id>176c31dfe190a</staging.profile.id>
 
-        <sonar.typescript.node>node</sonar.typescript.node>
+        <sonar.typescript.node>node/node</sonar.typescript.node>
         <sonar.sources>lib</sonar.sources>
         <sonar.inclusions>lib/*.ts</sonar.inclusions>
         <sonar.tests>lib</sonar.tests>
