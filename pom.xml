@@ -12,12 +12,12 @@
 		<nexus.proxy>https://nexus.onap.org</nexus.proxy>
 		<staging.profile.id>176c31dfe190a</staging.profile.id>
 
-        <sonar.typescript.node>node</sonar.typescript.node>
-        <sonar.sources>lib</sonar.sources>
-        <sonar.tests>lib</sonar.tests>
-        <sonar.test.inclusions>lib/*.spec.ts</sonar.test.inclusions>
-        <sonar.typescript.lcov.reportPaths>coverage/lcov.info</sonar.typescript.lcov.reportPaths>
-        <sonar.testExecutionReportPaths>coverage/test-report.xml</sonar.testExecutionReportPaths>
+        <sonar.typescript.node>${basedir}/node</sonar.typescript.node>
+        <sonar.sources>${basedir}/lib</sonar.sources>
+        <sonar.tests>${basedir}/lib</sonar.tests>
+        <sonar.test.inclusions>${basedir}/lib/*.spec.ts</sonar.test.inclusions>
+        <sonar.typescript.lcov.reportPaths>${basedir}/coverage/lcov.info</sonar.typescript.lcov.reportPaths>
+        <sonar.testExecutionReportPaths>${basedir}/coverage/test-report.xml</sonar.testExecutionReportPaths>
 	</properties>
 	
 	<build>
