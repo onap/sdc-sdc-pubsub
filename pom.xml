@@ -18,6 +18,7 @@
         <sonar.tests>lib</sonar.tests>
         <sonar.test.inclusions>lib/*.spec.ts</sonar.test.inclusions>
         <sonar.typescript.lcov.reportPaths>coverage/lcov.info</sonar.typescript.lcov.reportPaths>
+        <sonar.typescript.tslint.reportPaths>coverage/tslint-report.json</sonar.typescript.tslint.reportPaths>
         <sonar.testExecutionReportPaths>coverage/test-report.xml</sonar.testExecutionReportPaths>
 	</properties>
 	
@@ -109,6 +110,16 @@
                         <configuration>
                             <arguments>test -- --coverage</arguments>
                             <npmInheritsProxyConfigFromMaven>false</npmInheritsProxyConfigFromMaven>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>npm tslint</id>
+                        <goals>
+                            <goal>npm</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run lint</arguments>
                         </configuration>
                     </execution>
 

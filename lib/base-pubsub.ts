@@ -3,20 +3,20 @@ declare const window: Window;
 export class BasePubSub {
 
     subscribers: Map<string, ISubscriber>;
-    eventsCallbacks: Array<Function>;
+    eventsCallbacks: Function[];
     clientId: string;
-    eventsToWait: Map<string, Array<string>>;
+    eventsToWait: Map<string, string[]>;
     lastEventNotified: string;
 
     constructor(pluginId: string) {
         this.subscribers = new Map<string, ISubscriber>();
         this.eventsCallbacks = [];
-        this.eventsToWait = new Map<string, Array<string>>();
+        this.eventsToWait = new Map<string, string[]>();
         this.clientId = pluginId;
-        this.lastEventNotified = "";
+        this.lastEventNotified = '';
         this.onMessage = this.onMessage.bind(this);
 
-        window.addEventListener("message", this.onMessage);
+        window.addEventListener('message', this.onMessage);
     }
 
     public register(subscriberId: string, subscriberWindow: Window, subscriberUrl: string) {
@@ -33,8 +33,8 @@ export class BasePubSub {
     }
 
     public on(callback: Function) {
-        let functionExists = this.eventsCallbacks.find((func: Function) => {
-            return callback.toString() == func.toString()
+        const functionExists = this.eventsCallbacks.find((func: Function) => {
+            return callback.toString() === func.toString();
         });
 
         if (!functionExists) {
@@ -43,12 +43,12 @@ export class BasePubSub {
     }
 
     public off(callback: Function) {
-        let index = this.eventsCallbacks.indexOf(callback);
-        this.eventsCallbacks.splice(index, 1)
+        const index = this.eventsCallbacks.indexOf(callback);
+        this.eventsCallbacks.splice(index, 1);
     }
 
-    public notify(eventType:string, eventData?:any) {
-        let eventObj = {
+    public notify(eventType: string, eventData?: any) {
+        const eventObj = {
             type: eventType,
             data: eventData,
             originId: this.clientId
@@ -63,12 +63,12 @@ export class BasePubSub {
         return {
             subscribe: function(callbackFn) {
 
-                if(this.subscribers.size !== 0) {
-                    let subscribersToNotify = Array.from(this.subscribers.keys());
+                if (this.subscribers.size !== 0) {
+                    const subscribersToNotify = Array.from(this.subscribers.keys());
 
                     const checkNotifyComplete = (subscriberId: string) => {
 
-                        let index = subscribersToNotify.indexOf(subscriberId);
+                        const index = subscribersToNotify.indexOf(subscriberId);
                         subscribersToNotify.splice(index, 1);
 
                         if (subscribersToNotify.length === 0) {
@@ -77,31 +77,30 @@ export class BasePubSub {
                     };
 
                     this.subscribers.forEach((subscriber: ISubscriber, subscriberId: string) => {
-                        if (this.eventsToWait.has(subscriberId) && this.eventsToWait.get(subscriberId).indexOf(eventType) !== -1) {
+                        if (this.eventsToWait.has(subscriberId) &&
+                            this.eventsToWait.get(subscriberId).indexOf(eventType) !== -1) {
 
-                            const actionCompletedFunction = (eventData, subId = subscriberId) => {
-                                if (eventData.type == "ACTION_COMPLETED") {
+                            const actionCompletedFunction = (actionCompletedEventData, subId = subscriberId) => {
+                                if (actionCompletedEventData.type === 'ACTION_COMPLETED') {
                                     checkNotifyComplete(subId);
                                 }
                                 this.off(actionCompletedFunction);
 
                             };
                             this.on(actionCompletedFunction);
-                        }
-                        else {
+                        } else {
                             checkNotifyComplete(subscriberId);
                         }
                     });
-                }
-                else {
+                } else {
                     callbackFn();
                 }
             }.bind(this)
-        }
+        };
     }
 
-    public isWaitingForEvent(eventName: string) : boolean {
-        return Array.from(this.eventsToWait.values()).some((eventsList: Array<string>) =>
+    public isWaitingForEvent(eventName: string): boolean {
+        return Array.from(this.eventsToWait.values()).some((eventsList: string[]) =>
             eventsList.indexOf(eventName) !== -1
         );
     }
@@ -110,7 +109,7 @@ export class BasePubSub {
         if (this.subscribers.has(event.data.originId)) {
             this.eventsCallbacks.forEach((callback: Function) => {
                 callback(event.data, event);
-            })
+            });
         }
     }
 }
