@@ -3,7 +3,7 @@ var webpack = require("webpack");
 var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 var PATHS = {
-  entryPoint: path.resolve(__dirname, 'index.ts'),
+  entryPoint: path.resolve(__dirname, './index.ts'),
   bundles: path.resolve(__dirname, 'dist'),
 }
 
@@ -13,8 +13,8 @@ var config = {
   // the name to filter the second entry point for applying code
   // minification via UglifyJS
   entry: {
-    'sdc-pubsub': [PATHS.entryPoint],
-    'sdc-pubsub.min': [PATHS.entryPoint]
+    'sdc-pubsub': PATHS.entryPoint,
+    'sdc-pubsub.min': PATHS.entryPoint
   },
   // The output defines how and where we want the bundles. The special
   // value `[name]` in `filename` tell Webpack to use the name we defined above.
@@ -55,9 +55,9 @@ var config = {
         test: /\.ts?$/,
         use: [
           {
-            loader: 'awesome-typescript-loader',
+            loader: 'ts-loader',
             options: {
-              configFileName: 'tsconfig.json'
+              configFile : 'tsconfig.json'
             }
           }
         ]
