@@ -19,7 +19,7 @@ import {PluginPubSub} from 'sdc-pubsub'
 
 ```html
 <!-- index.html -->
-<script src="./node_Modules/sdc-pubsub/dist/sdc-pubsub.js"></script>
+<script src="./node_modules/sdc-pubsub/dist/sdc-pubsub.js"></script>
 ```
 
 ```javascript
@@ -50,8 +50,8 @@ client.notify(“READY”)
 // eventData.type will hold the event name that was notified by someone else
 client.on((eventData,event) => {
       if(eventData.type == ”WINDOW_OUT”) {
-		             //do logic
-       }
+          //do logic
+      }
    }
 )
 ```
