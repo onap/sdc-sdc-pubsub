@@ -19,7 +19,7 @@ import {PluginPubSub} from 'sdc-pubsub'
 
 ```html
 <!-- index.html -->
-<script src="./node_Modules/sdc-pubsub/dist/sdc-pubsub.js"></script>
+<script src="./node_modules/sdc-pubsub/dist/sdc-pubsub.js"></script>
 ```
 
 ```javascript
