@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Tal  Gitelman <tal.gitelman@att.com>
+Code-Review+2: Idan Amit <idan.amit@intl.att.com>
+Code-Review+2: Ofir Sonsino <ofir.sonsino@intl.att.com>
+Submitted-by: Ofir Sonsino <ofir.sonsino@intl.att.com>
+Submitted-at: Mon, 07 Jan 2019 16:12:16 +0000
+Reviewed-on: https://gerrit.onap.org/r/75334
+Project: sdc/sdc-pubsub
+Branch: refs/heads/master
