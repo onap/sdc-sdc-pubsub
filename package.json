@@ -1,5 +1,5 @@
 {
-  "name": "sdc-pubsub",
+  "name": "@onap-project/sdc-pubsub",
   "version": "1.0.30",
   "description": "Publish Subscribe library using post message for sdc plugins",
   "main": "index.js",
