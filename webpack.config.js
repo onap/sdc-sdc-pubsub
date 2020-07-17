@@ -3,7 +3,7 @@ var webpack = require("webpack");
 var UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 var PATHS = {
-  entryPoint: path.resolve(__dirname, './index.ts'),
+  entryPoint: path.resolve(__dirname, './src/index.ts'),
   bundles: path.resolve(__dirname, 'dist'),
 };
 

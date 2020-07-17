@@ -9,10 +9,11 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "declaration": true,
-    "rootDir": "src"
+    "rootDir": "src",
+    "skipLibCheck": true
   },
   "files": [
-    "./index.ts"
+    "./src/index.ts"
   ],
   "compileOnSave": false,
   "buildOnSave": false
