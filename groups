@@ -1,4 +1,5 @@
 # UUID                                                                         	Group Name
 #
 daebbf523be390041a1a9c0e340a6d833aae5043                                       	GitHub Replication
+eef3bb1f643134f389cfc678acae5e83ae87189e                                       	saml/onap-gerrit-sdc-sdc-pubsub-committers
 ldap:cn=onap-gerrit-sdc-sdc-pubsub-committers,ou=Groups,dc=freestandards,dc=org	ldap/onap-gerrit-sdc-sdc-pubsub-committers
