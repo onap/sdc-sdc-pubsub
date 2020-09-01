@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Sébastien Determe <sebastien.determe@intl.att.com>
+Code-Review+2: Julien Bertozzi <julien.bertozzi@intl.att.com>
+Submitted-by: Julien Bertozzi <julien.bertozzi@intl.att.com>
+Submitted-at: Tue, 01 Sep 2020 13:01:46 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/sdc/sdc-pubsub/+/111934
+Project: sdc/sdc-pubsub
+Branch: refs/heads/master
